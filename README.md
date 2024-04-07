@@ -1,4 +1,4 @@
-An All-In-One Bash script designed to combine some of Kali Linux's Forensics tools (Binwalk, Foremost, Bulk Extractor & Volatility) in order to automate the Forensics process.
+An All-In-One Bash script designed to combine some of Kali Linux's Forensics tools (Binwalk, Foremost, Bulk Extractor & Volatility) in order to automate the data Forensics process.
 
 The script performs the following operations:
 - Checks in order to make sure all tools are installed. If a tool is missing, the script attempts to install it.
