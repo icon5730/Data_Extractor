@@ -8,7 +8,7 @@ The script performs the following operations:
 - Carves data using Bulk Extractor; checks if the carved data has a pcap file. If it finds one saves the file inside the timestamped folder separate from the carved data.
 - Examines the file for human-readable strings provided by the user.
 - Checks if the file is a memory file. If it is - allows the user to generate data out of it based on user input.
-- Generates a table of content file inside the timestamped folder, containing the folder's content, the date and time the analysis took place, and the time it took for the analysis to complete.
+- Generates a table of content file inside the timestamped folder containing the folder's content, the date and time the analysis took place, and the time it took for the analysis to complete.
 - Asks if the user wishes to zip the results.
 - Ask the user whether they wish to examine another file. 
 
