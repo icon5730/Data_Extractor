@@ -234,9 +234,9 @@ elapsed_time=$((end_time - start_time))
 
 
 #The script calculates the elapsed time and saves it into a file. The script then runs the tree command on the output folder in order to catalogue its contents, and adds it to the same file. Once that's done, the file is moved into the output folder, which is then zipped and deleted, leaving only the .zip file. 
-echo "Elapsed time: $elapsed_time Seconds" > Table_of_Content.$ts.txt
-tree Output_Data.$ts >> Table_of_Content.$ts.txt
-mv ./Table_of_Content.$ts.txt ./Output_Data.$ts/Table_of_Content.$ts
+echo "Elapsed time: $elapsed_time Seconds" > Table_of_Contents.$ts.txt
+tree Output_Data.$ts >> Table_of_Contents.$ts.txt
+mv ./Table_of_Contents.$ts.txt ./Output_Data.$ts/Table_of_Contents.$ts
 
 read -p "[?] Data carving and gethering complete. Would you like to zip the output? [Y/N]: " decision
 case $decision in
