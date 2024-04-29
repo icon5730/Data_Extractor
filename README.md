@@ -1,11 +1,11 @@
-An All-In-One Bash script designed to combine some of Kali Linux's Forensics tools (Binwalk, Foremost, Bulk Extractor & Volatility) in order to automate the data Forensics process.
+An All-In-One Bash script designed to combine some of Kali Linux's Forensics tools (Binwalk, Foremost, Bulk Extractor, Strings & Volatility) in order to automate the data Forensics process.
 
 The script performs the following operations:
 - Checks to make sure all tools are installed. If a tool is missing, the script attempts to install it.
 - Takes an image file from the user to inspect.
 - Generates an offset map using Binwalk and saves it in a timestamped folder.
 - Carves data using Foremost and saves the data inside the timestamped folder.
-- Carves data using Bulk Extractor; checks if the carved data has a pcap file. If it finds one saves the file inside the timestamped folder separate from the carved data.
+- Carves data using Bulk Extractor; checks if the carved data has a pcap file. If it finds one - saves the file inside the timestamped folder separate from the carved data.
 - Examines the file for human-readable strings provided by the user.
 - Checks if the file is a memory file. If it is - allows the user to generate data out of it based on user input while using Volatility.
 - Generates a table of contents file inside the timestamped folder containing the folder's content, the date and time the analysis took place, and the time it took for the analysis to complete.
