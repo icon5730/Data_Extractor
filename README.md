@@ -13,7 +13,7 @@ The script performs the following operations:
 - Ask the user whether they wish to examine another file. 
 
 Notes: 
-1. The script uses volatility_2.5.linux.standalone. If you wish to use a different version - the script needs to be modified to accommodate it.
+1. The script uses volatility_2.5.linux.standalone. If you wish to use a later version - the script needs to be modified to accommodate it.
 2. Success of the tool installation segment may vary depending on the type of Linux Distro being used.
 
 ![1](https://github.com/icon5730/Data_Extractor/assets/166230648/bca14fe7-319f-4af8-9d45-69d637a0e8b0)
