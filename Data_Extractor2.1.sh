@@ -187,7 +187,7 @@ start_time=$(date +%s)
 		read -p "[?] Please enter human readable values you wish to extract (use spacebar to seperate the values): " values
 		for x in $values
 		do
-		strings $path | grep -i $x > ./Strings_Output/strings_$x.txt | echo -e "$cyan[+] $x human readlable was saved into Strings_Output$endcolor"
+		strings $path | grep -i $x > ./Strings_Output/strings_$x.txt | echo -e "$cyan[+] $x human readable was saved into Strings_Output$endcolor"
 		done
 		mv ./Strings_Output ./Output_Data.$ts/Strings_Output
 		echo -e "$green[*] Human readable data was saved into Strings_Output inside the main folder$endcolor\n" 
