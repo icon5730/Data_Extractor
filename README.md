@@ -1,4 +1,4 @@
-An All-In-One Bash script designed to combine some of Kali Linux's Forensics tools (Binwalk, Foremost, Bulk Extractor, Strings & Volatility) in order to automate the data Forensics process.
+An All-In-One Bash script designed to combine some of Kali Linux's Forensics tools (Binwalk, Foremost, Bulk Extractor, Strings & Volatility) in order to automate the Data Forensics process in Incident Response scenarios.
 
 The script performs the following operations:
 - Checks to make sure all tools are installed. If a tool is missing, the script attempts to install it.
@@ -14,7 +14,7 @@ The script performs the following operations:
 
 Notes: 
 1. The script uses volatility_2.5.linux.standalone. If you wish to use a different version - the script needs to be modified to accommodate it.
-2. Success of the tool installation segment may vary depending on the type of Linux being used.
+2. Success of the tool installation segment may vary depending on the type of Linux Distro being used.
 
 ![1](https://github.com/icon5730/Data_Extractor/assets/166230648/bca14fe7-319f-4af8-9d45-69d637a0e8b0)
 ![2](https://github.com/icon5730/Data_Extractor/assets/166230648/3eadefbd-c6e4-4da1-bd4b-45c67f4a119c)
