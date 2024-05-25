@@ -14,7 +14,7 @@ endcolor="\e[0m"
 #The first function's main purpose is to make sure the script runs with root privileges. If the user is not root, the script alerts the user and terminates in order for the user to restart it properly. 
 function privileges (){
 if [[ $(id -u) -ne 0 ]]; then
-                echo -e "$redWARNING!!! \nThis script must run with root privileges. \nPlease restart the script under root. \nTerminating script operations...$endcolor"
+                echo -e "$red[!] WARNING!!! \nThis script must run with root privileges. \nPlease restart the script under root. \nTerminating script operations...$endcolor"
                 exit 1
 fi
 
@@ -35,14 +35,13 @@ echo -e "$yellow****************************************************************
 
 function installation1(){
 if ! command -v figlet &> /dev/null ;then
-                            echo -e "$red[!] Figlet is not installed$endcolor"
-                            echo -e "$yellow[+] Installing Figlet:$endcolor"
-                            sudo apt install figlet &> /dev/null
-                                echo -e "$green[*] Figlet is installed$endcolor"
-                                sleep 0.2
-                        else
-                            echo -e "$green[*] Figlet is already installed$endcolor"
-                                sleep 0.2
+        echo -e "$red[!] Figlet is not installed$endcolor" ; sleep 0.2
+        echo -e "$yellow[+] Installing Figlet:$endcolor"
+        sudo apt install figlet -y &> /dev/null
+        	if ! command -v figlet &>/dev/null ; then echo -e "$red[!] Failed to install figlet $endcolor" 
+			else echo -e "$green[*] Figlet is installed$endcolor" ; sleep 0.2
+                fi
+         else echo -e "$green[*] Figlet is already installed$endcolor" ; sleep 0.2
 fi
 }
 
@@ -50,49 +49,46 @@ fi
 function installation2(){
 
 if ! command -v foremost &> /dev/null ;then
-                            echo -e "$red[!] Foremost is not installed$endcolor"
-                            echo -e "$yellow[+] Installing Foremost:$endcolor"
-                            sudo apt install foremost &> /dev/null
-                                echo -e "$green[*] Foremost is installed$endcolor"
-                                sleep 0.2
-                        else
-                            echo -e "$green[*] Foremost is already installed$endcolor"
-                                sleep 0.2
+        echo -e "$red[!] Foremost is not installed$endcolor" ; sleep 0.2
+        echo -e "$yellow[+] Installing Foremost:$endcolor"
+        sudo apt install foremost -y &> /dev/null
+		if ! command -v foremost &>/dev/null ; then echo -e "$red[!] Failed to install foremost $endcolor"
+                	else echo -e "$green[*] Foremost is installed$endcolor" ; sleep 0.2
+		fi
+	else echo -e "$green[*] Foremost is already installed$endcolor" ; sleep 0.2
 fi
 }
 
 #Same concept as the previous installation functions, only for Bulk Extractor.
 function installation3(){
 if ! command -v bulk_extractor &> /dev/null ;then
-                            echo -e "$red[!] Bulk Extractor is not installed$endcolor"
-                            echo -e "$yellow[+] Installing Bulk Extractor:$endcolor"
-                            				git clone --recurse-submodules https://github.com/simsong/bulk_extractor.git &> /dev/null
-							apt-get install libre2-dev &> /dev/null
-							cd bulk_extractor 
-							./bootstrap.sh &> /dev/null
-							./configure &> /dev/null
-							make &> /dev/null
-							make install &> /dev/null
-							cd ..
-                                echo -e "$green[*] Bulk Extractor is installed$endcolor"
-                                sleep 0.2
-                        else
-                            echo -e "$green[*] Bulk Extractor is already installed$endcolor"
-                                sleep 0.2
+	echo -e "$red[!] Bulk Extractor is not installed$endcolor"
+	echo -e "$yellow[+] Installing Bulk Extractor:$endcolor"
+	git clone --recurse-submodules https://github.com/simsong/bulk_extractor.git &> /dev/null
+	apt-get install libre2-dev &> /dev/null
+	cd bulk_extractor 
+	./bootstrap.sh &> /dev/null
+	./configure &> /dev/null
+	make &> /dev/null
+	make install &> /dev/null
+	cd ..
+        	if ! command -v bulk_extractor &> /dev/null ; then echo -e "$red[!] Failed to install Bulk Extractor $endcolor" ; sleep 0.2
+			else echo -e "$green[*] Bulk Extractor is installed$endcolor" ; sleep 0.2
+		fi
+	else echo -e "$green[*] Bulk Extractor is already installed$endcolor" ; sleep 0.2
 fi
 }
 
 #Same concept as the previous installation functions.
 function installation4(){
 if ! command -v strings &> /dev/null ;then
-                            echo -e "$red[!] Strings is not installed$endcolor"
-                            echo -e "$yellow[+] Installing Strings:$endcolor"
-                            sudo apt install figlet &> /dev/null
-                                echo -e "$green[*] Strings is installed$endcolor"
-                                sleep 0.2
-                        else    
-                            echo -e "$green[*] Strings is already installed$endcolor"
-                                sleep 0.2
+	echo -e "$red[!] Strings is not installed$endcolor"
+	echo -e "$yellow[+] Installing Strings:$endcolor"
+	sudo apt install strings -y &> /dev/null
+		if ! command -v strings &> /dev/null ; then echo -e "$red[!] Failed to install strings $endcolor" ; sleep 0.2
+			else	echo -e "$green[*] Strings is installed$endcolor" ; sleep 0.2
+		fi
+	else echo -e "$green[*] Strings is already installed$endcolor" ; sleep 0.2
 fi
 }
 
@@ -105,24 +101,24 @@ if [[ ! $voli ]]; then
         wget http://downloads.volatilityfoundation.org/releases/2.5/volatility_2.5.linux.standalone.zip &> /dev/null
 	unzip volatility_2.5.linux.standalone.zip &> /dev/null
 	mv ./volatility_2.5.linux.standalone/volatility_2.5_linux_x64 ./volatility_2.5.linux.standalone/vol &> /dev/null
-        echo -e "$green[*] Volatility is installed$endcolor"
-        sleep 0.2
-else
-        echo -e "$green[*] Volatility is already installed$endcolor"
+	volfile=$(find -type f -name vol)
+	if [ -f $volfile ]; then echo -e "$green[*] Volatility is installed$endcolor" ; sleep 0.2
+		else echo -e "$red[!] Failed to install Volatility $endcolor"
+	fi
+        else echo -e "$green[*] Volatility is already installed$endcolor"
         sleep 0.2
 fi
 }
 #Last installation function. Same as the first four.
 function installation6(){
 if ! command -v tree &> /dev/null ;then
-                            echo -e "$red[!] Tree is not installed$endcolor"
-                            echo -e "$yellow[+] Installing Tree:$endcolor"
-                            sudo apt install tree &> /dev/null
-                                echo -e "$green[*] Tree is installed$endcolor"
-                                sleep 0.2
-                        else
-                            echo -e "$green[*] Tree is already installed$endcolor"
-                                sleep 0.2
+	echo -e "$red[!] Tree is not installed$endcolor"
+	echo -e "$yellow[+] Installing Tree:$endcolor"
+	sudo apt install tree -y &> /dev/null
+		if ! command -v tree &> /dev/null ; then echo -e "$red[!] Failed to install Tree $endcolor" ; sleep 0.2 
+			else echo -e "$green[*] Tree is installed$endcolor" ; sleep 0.2
+		fi
+	else echo -e "$green[*] Tree is already installed$endcolor" ; sleep 0.2
 fi
 }
 
