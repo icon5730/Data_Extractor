@@ -5,6 +5,7 @@ The script performs the following operations:
 - Takes an image file from the user to inspect.
 - Generates an offset map using Binwalk and saves it in a timestamped folder.
 - Carves data using Foremost and saves the data inside the timestamped folder.
+- Uses Exiftool in order to generate metadata on the files carved using Foremost.
 - Carves data using Bulk Extractor; checks if the carved data has a pcap file. If it finds one - saves the file inside the timestamped folder separate from the carved data.
 - Examines the file for human-readable strings provided by the user.
 - Checks if the file is a memory file. If it is - allows the user to generate data out of it based on user input while using Volatility.
@@ -16,8 +17,16 @@ Notes:
 1. The script uses volatility_2.5.linux.standalone. If you wish to use a later version - the script needs to be modified to accommodate it.
 2. Success of the tool installation segment may vary depending on the type of Linux Distro being used.
 
-![1](https://github.com/icon5730/Data_Extractor/assets/166230648/bca14fe7-319f-4af8-9d45-69d637a0e8b0)
-![2](https://github.com/icon5730/Data_Extractor/assets/166230648/3eadefbd-c6e4-4da1-bd4b-45c67f4a119c)
-![3](https://github.com/icon5730/Data_Extractor/assets/166230648/0ee86e07-e2d7-4d9a-98a4-f309a4f36ae3)
-![4](https://github.com/icon5730/Data_Extractor/assets/166230648/1f787042-9639-484f-be47-606ccea0aff8)
-![5](https://github.com/icon5730/Data_Extractor/assets/166230648/3c1fa31e-5910-4f7b-9631-b8cdfdbf03b3)
+<b>Full Script Run:</b>
+![1](https://github.com/icon5730/Data_Extractor/assets/166230648/995f9e2a-3432-4dbd-b0e6-26a1c4aebdee)
+![2](https://github.com/icon5730/Data_Extractor/assets/166230648/0701db96-64f2-4ee4-857a-e0c54fb36863)
+<b>Folder Contents:</b>
+![3](https://github.com/icon5730/Data_Extractor/assets/166230648/86d136ba-cd2d-4cf2-b87b-df6a946f52ce)
+![8](https://github.com/icon5730/Data_Extractor/assets/166230648/1db92f73-9944-431d-b664-9fedcb36dec8)
+![9](https://github.com/icon5730/Data_Extractor/assets/166230648/3beead34-0739-4b6c-a2ee-7395367161f3)
+![10](https://github.com/icon5730/Data_Extractor/assets/166230648/039a25e5-2a17-4d16-a0c8-ff0775d744e7)
+<b>Generated File Contents:</b>
+![4](https://github.com/icon5730/Data_Extractor/assets/166230648/21047b45-eb32-4264-b69d-cf75959b6af7)
+![5](https://github.com/icon5730/Data_Extractor/assets/166230648/c78b5aa5-1c6d-4186-9220-f57869bab34c)
+![6](https://github.com/icon5730/Data_Extractor/assets/166230648/d224ad98-d8e1-4d5f-add5-2dce77225070)
+![7](https://github.com/icon5730/Data_Extractor/assets/166230648/be9132e4-d0ac-4969-925a-7ad40aaae86c)
