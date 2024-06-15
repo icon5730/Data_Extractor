@@ -20,11 +20,13 @@ Notes:
 <b>Full Script Run:</b>
 ![1](https://github.com/icon5730/Data_Extractor/assets/166230648/995f9e2a-3432-4dbd-b0e6-26a1c4aebdee)
 ![2](https://github.com/icon5730/Data_Extractor/assets/166230648/0701db96-64f2-4ee4-857a-e0c54fb36863)
+
 <b>Folder Contents:</b>
 ![3](https://github.com/icon5730/Data_Extractor/assets/166230648/86d136ba-cd2d-4cf2-b87b-df6a946f52ce)
 ![8](https://github.com/icon5730/Data_Extractor/assets/166230648/1db92f73-9944-431d-b664-9fedcb36dec8)
 ![9](https://github.com/icon5730/Data_Extractor/assets/166230648/3beead34-0739-4b6c-a2ee-7395367161f3)
 ![10](https://github.com/icon5730/Data_Extractor/assets/166230648/039a25e5-2a17-4d16-a0c8-ff0775d744e7)
+
 <b>Generated File Contents:</b>
 ![4](https://github.com/icon5730/Data_Extractor/assets/166230648/21047b45-eb32-4264-b69d-cf75959b6af7)
 ![5](https://github.com/icon5730/Data_Extractor/assets/166230648/c78b5aa5-1c6d-4186-9220-f57869bab34c)
