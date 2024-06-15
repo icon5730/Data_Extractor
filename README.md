@@ -18,6 +18,7 @@ Notes:
 2. Success of the tool installation segment may vary depending on the type of Linux Distro being used.
 
 <b>Full Script Run:</b>
+
 ![1](https://github.com/icon5730/Data_Extractor/assets/166230648/995f9e2a-3432-4dbd-b0e6-26a1c4aebdee)
 ![2](https://github.com/icon5730/Data_Extractor/assets/166230648/0701db96-64f2-4ee4-857a-e0c54fb36863)
 
@@ -29,6 +30,7 @@ Notes:
 ![10](https://github.com/icon5730/Data_Extractor/assets/166230648/039a25e5-2a17-4d16-a0c8-ff0775d744e7)
 
 <b>Generated File Contents:</b>
+
 ![4](https://github.com/icon5730/Data_Extractor/assets/166230648/21047b45-eb32-4264-b69d-cf75959b6af7)
 ![5](https://github.com/icon5730/Data_Extractor/assets/166230648/c78b5aa5-1c6d-4186-9220-f57869bab34c)
 ![6](https://github.com/icon5730/Data_Extractor/assets/166230648/d224ad98-d8e1-4d5f-add5-2dce77225070)
