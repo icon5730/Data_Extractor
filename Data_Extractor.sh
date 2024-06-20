@@ -137,11 +137,11 @@ function test(){
 if [ ! command -v figlet 2>/dev/null ] || [ ! command -v foremost 2>/dev/null ] || [ ! command -v strings 2>/dev/null ] || [ ! command -v bulk_extractor 2>/dev/null ] || [ -f $voli 2>/dev/null ] 
         then
         echo -e "$red[!] One or more of the tools needed to run this script is not installed and failed to autoinstall$endcolor"
-        read -p "Would you like to run the script anyway? [Y/N]" choice
+        read -p "$(echo -e "\n$cyan[?]$endcolor$yellow Would you like to run the script anyway? [Y/N] $endcolor")" choice
 		case $choice in
 		Y) text
 		;;
-		N) echo -e "$red[*] Exiting..."
+		N) echo -e "$cyan[*]$endcolor$red Exiting..."
         	sleep 0.3
         	exit 1 
 		;;
@@ -214,7 +214,7 @@ start_time=$(date +%s)
 					echo -e "$red[!] No packets.pcap file found within carved data$endcolor"
 			fi
 		mv ./Bulk_Output ./Output_Data.$ts/Bulk_Output
-		echo -e "$green[*] Bulk Extractor carving complete. Data was Saved into Bulk_Output inside the main folder$endcolor\n"
+		echo -e "$green[*] Bulk Extractor carving complete. Data was saved into Bulk_Output inside the main folder$endcolor\n"
 
 #A strings output folder is created and the script runs strings on the file in order to extract human readable data. It uses a loop function in order to extract the user input data.
 		mkdir Strings_Output
