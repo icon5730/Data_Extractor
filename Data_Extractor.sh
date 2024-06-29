@@ -137,7 +137,7 @@ function test(){
 
 if [ ! command -v figlet 2>/dev/null ] || [ ! command -v foremost 2>/dev/null ] || [ ! command -v strings 2>/dev/null ] || [ ! command -v bulk_extractor 2>/dev/null ] || [ -f $voli 2>/dev/null ] 
         then
-        echo -e "$red[!] One or more of the tools needed to run this script is not installed and failed to autoinstall$endcolor"
+        echo -e "$red[!] One or more of the tools needed to run this script was not installed and required an autoinstallation attempt$endcolor"
         read -p "$(echo -e "\n$cyan[?]$endcolor$yellow Would you like to run the script anyway? [Y/N] $endcolor")" choice
 		case $choice in
 		Y) text
