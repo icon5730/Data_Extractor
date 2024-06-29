@@ -94,15 +94,8 @@ fi
 
 #This function tries to locate the Volatility executable, now named vol. If it fails to locate the file, it dnowloads Volatility, unzips it, and renames the exacutable to vol. 
 function installation5(){
-if ! command -v locate &>/dev/null
-	then
-	echo -e "$red[!] Locate command was not found $endcolor"
-	echo -e "$yellow[+] Installing Locate command $endcolor"
-	sudo apt install mlocate -y &>/dev/null
-	updatedb
-	echo -e "$cyan[*]$endcolor$green Locate command was installed and the database was updated $endcolor"
-fi
-voli=$(locate -b -l 1 volatility_2.5.linux.standalone)
+
+voli=$(find /home/ -type d -name "volatility_2.5.linux.standalone" | head -n 1 2>/dev/null)
 if [[ ! $voli ]]; then
         echo -e "$red[!] Volatility is not installed$endcolor"
         echo -e "$yellow[+] Installing Volatility $endcolor"
