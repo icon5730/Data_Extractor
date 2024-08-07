@@ -27,7 +27,7 @@ fi
 function commence(){
 echo -e "$yellow*******************************************************************************$endcolor"
 echo -e "$yellow*******************************************************************************$endcolor"
-echo -e "$yellow*******************COMMENCING INSTALLATION TOOL CHECKUP:***********************$endcolor"
+echo -e "$yellow*******************$endcolor${red}COMMENCING INSTALLATION TOOL CHECKUP:$endcolor$yellow***********************$endcolor"
 echo -e "$yellow*******************************************************************************$endcolor"
 }
 
@@ -72,7 +72,7 @@ if ! command -v bulk_extractor &> /dev/null ;then
 	make &> /dev/null
 	make install &> /dev/null
 	cd ..
-        	if ! command -v bulk_extractor &> /dev/null ; then echo -e "$red[!] Failed to install Bulk Extractor $endcolor" ; sleep 0.2
+        if ! command -v bulk_extractor &> /dev/null ; then echo -e "$red[!] Failed to install Bulk Extractor $endcolor" ; sleep 0.2
 			else echo -e "$green[*] Bulk Extractor is installed$endcolor" ; sleep 0.2
 		fi
 	else echo -e "$green[*] Bulk Extractor is already installed$endcolor" ; sleep 0.2
@@ -135,7 +135,7 @@ fi
 
 function test(){
 
-if [ ! command -v figlet 2>/dev/null ] || [ ! command -v foremost 2>/dev/null ] || [ ! command -v strings 2>/dev/null ] || [ ! command -v bulk_extractor 2>/dev/null ] || [ -f $voli 2>/dev/null ] 
+if ! command -v figlet &>/dev/null || ! command -v foremost &>/dev/null || ! command -v strings &>/dev/null || ! command -v bulk_extractor &>/dev/null || -f $voli &>/dev/null || ! command -v exiftool &> /dev/null
         then
         echo -e "$red[!] One or more of the tools needed to run this script was not installed and required an autoinstallation attempt$endcolor"
         read -p "$(echo -e "\n$cyan[?]$endcolor$yellow Would you like to run the script anyway? [Y/N] $endcolor")" choice
@@ -158,7 +158,7 @@ fi
 function text(){
 
 echo -e "$yellow*******************************************************************************$endcolor"
-echo -e "$yellow***********EVERYTHING IS GOOD TO GO, PROCEEDING TO SCRIPT OPERATIONS:**********$endcolor"
+echo -e "$yellow***********$endcolor${green}EVERYTHING IS GOOD TO GO, PROCEEDING TO SCRIPT OPERATIONS:$endcolor$yellow**********$endcolor"
 echo -e "$yellow*******************************************************************************$endcolor"
 echo -e "$yellow*******************************************************************************$endcolor"
 
@@ -236,7 +236,9 @@ start_time=$(date +%s)
 
 #Script attemts to determine the file's profile in order to find out whether or not a .mem file is being used. If a profile is not found - the file is a memory file. If the file is a memory file, the script extracts the profile and displays it on screen. Then, it prompts the user to type in the plugins they would like to use. The script analyzes the file based on the plugins, and saves the data into .html files inside an output folder that is later moved into the main outout folder. If the file is not a memory file, the script prompts the user and continue to the final part. 
 echo -e "$cyan[*]$endcolor$yellow Attempting Volatility analysis on inspected file...$endcolor\n"
-cp $voli/vol ./vol
+#changed how the vol file is being summoned
+voli=$(find /home/ -type f -iname "vol" | head -n 1 2>/dev/null)
+cp $voli ./vol
 sleep 2
 	if [ -z "$( ./vol -f $path imageinfo 2> /dev/null | grep -i suggest | grep -i 'No Suggestion' )" ];
                 then 
@@ -284,7 +286,7 @@ Y)	echo -e "\n$cyan[+]$endcolor$blue Zipping data as$endcolor$green Data_Extract
        	if [ $answer == Y ]; then analyze
                                else     echo -e "\n$yellow*******************************************************************************$endcolor"
                                         echo -e "$yellow*******************************************************************************$endcolor"
-                                        echo -e "$yellow*************************ANALYSIS COMPLETE! EXITING...*************************$endcolor"
+                                        echo -e "$yellow*************************$endcolor${green}ANALYSIS COMPLETE! EXITING...$endcolor$yellow*************************$endcolor"
                                         echo -e "$yellow*******************************************************************************$endcolor"
                                         echo -e "$yellow*******************************************************************************$endcolor"
                                         exit 1 
@@ -298,7 +300,7 @@ N)	read -p "$(echo -e "\n$cyan[?]$endcolor$yellow Would you like to analyze anot
 
 	N) 				echo -e "\n$yellow*******************************************************************************$endcolor"
                                         echo -e "$yellow*******************************************************************************$endcolor"
-                                        echo -e "$yellow*************************ANALYSIS COMPLETE! EXITING...*************************$endcolor"
+                                        echo -e "$yellow*************************$endcolor${green}ANALYSIS COMPLETE! EXITING...$endcolor$yellow*************************$endcolor"
                                         echo -e "$yellow*******************************************************************************$endcolor"
                                         echo -e "$yellow*******************************************************************************$endcolor"
                                         exit 1 
@@ -306,7 +308,7 @@ N)	read -p "$(echo -e "\n$cyan[?]$endcolor$yellow Would you like to analyze anot
 	*) echo -e "$red[!] Invalid input!endcolor"
         echo -e "\n$yellow*******************************************************************************$endcolor"
         echo -e "$yellow*******************************************************************************$endcolor"
-        echo -e "$yellow*************************ANALYSIS COMPLETE! EXITING...*************************$endcolor"
+        echo -e "$yellow*************************$endcolor${green}ANALYSIS COMPLETE! EXITING...$endcolor$yellow*************************$endcolor"
         echo -e "$yellow*******************************************************************************$endcolor"
         echo -e "$yellow*******************************************************************************$endcolor"
         exit 1
@@ -317,7 +319,7 @@ N)	read -p "$(echo -e "\n$cyan[?]$endcolor$yellow Would you like to analyze anot
 *)	echo -e "$red[!] Invalid input!$endcolor"
 	echo -e "\n$yellow*******************************************************************************$endcolor"
         echo -e "$yellow*******************************************************************************$endcolor"
-      	echo -e "$yellow*************************ANALYSIS COMPLETE! EXITING...*************************$endcolor"
+      	echo -e "$yellow*************************$endcolor${green}ANALYSIS COMPLETE! EXITING...$endcolor$yellow*************************$endcolor"
         echo -e "$yellow*******************************************************************************$endcolor"
         echo -e "$yellow*******************************************************************************$endcolor"
         exit 1
