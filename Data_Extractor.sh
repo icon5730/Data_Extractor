@@ -289,7 +289,7 @@ echo "Elapsed time: $elapsed_time Seconds" > Table_of_Contents.$ts.txt
 tree Output_Data.$ts >> Table_of_Contents.$ts.txt
 mv ./Table_of_Contents.$ts.txt ./Output_Data.$ts/Table_of_Contents.$ts
 
-read -p "$(echo -e "\n$cyan[*]$endcolor$green Data carving and gethering complete \n$endcolor$cyan[+]$endcolor$yellow Time elapsed: $endcolor$red$elapsed_time Seconds$endcolor$yellow. \n$endcolor$cyan[?]$endcolor$yellow Would you like to zip the output folder? [Y/N] $endcolor")" decision
+read -p "$(echo -e "\n$cyan[*]$endcolor$green Data carving and gethering complete \n$endcolor$cyan[+]$endcolor$yellow Time elapsed: $endcolor$red$elapsed_time Seconds \n$endcolor$cyan[?]$endcolor$yellow Would you like to zip the output folder? [Y/N] $endcolor")" decision
 case $decision in
 
 Y)	log_operation "File inspection complete. Total inspection time: $elapsed_time seconds"
