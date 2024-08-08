@@ -10,6 +10,7 @@ The script performs the following operations:
 - Examines the file for human-readable strings provided by the user.
 - Checks if the file is a memory file. If it is - allows the user to generate data out of it based on user input while using Volatility.
 - Generates a table of contents file inside the timestamped folder containing the folder's content, the date and time the analysis took place, and the time it took for the analysis to complete.
+- Generates a full timed Operations Log, timestamping every operation the script ran.
 - Asks if the user wishes to zip the results.
 - Ask the user whether they wish to examine another file. 
 
@@ -19,22 +20,20 @@ Notes:
 
 <b>Full Script Run:</b>
 
-![1](https://github.com/icon5730/Data_Extractor/assets/166230648/bfc2c91d-5ad0-47ba-801a-7e7aadf25a03)
-![2](https://github.com/icon5730/Data_Extractor/assets/166230648/61fd5c80-aa89-4d7c-b9da-bfbe34d7de20)
+![1](https://github.com/user-attachments/assets/d9db4913-d816-4b59-bcf1-00cf29d4014a)
+![2](https://github.com/user-attachments/assets/09fe4620-8870-4900-8e24-5a253e5c44df)
 
 <b>Folder Contents:</b>
 
-![3](https://github.com/icon5730/Data_Extractor/assets/166230648/c536ef72-e0a7-4c2f-b538-a8c57400ba58)
-![4](https://github.com/icon5730/Data_Extractor/assets/166230648/abd3a0b3-1d8d-409c-9f72-093c9d4bf69a)
-![5](https://github.com/icon5730/Data_Extractor/assets/166230648/28435bd7-cf5d-466a-a5e6-a2507a4c7b8b)
-![6](https://github.com/icon5730/Data_Extractor/assets/166230648/43bd2084-39bc-41ad-9163-a0707c066928)
-![7](https://github.com/icon5730/Data_Extractor/assets/166230648/a0e990de-a900-47ec-a55d-08614148bd47)
-
+![3](https://github.com/user-attachments/assets/f2283502-7188-442b-b823-08836734cc0f)
+![4](https://github.com/user-attachments/assets/4e80aab4-b983-4ba3-addf-b34d407bd3b9)
+![5](https://github.com/user-attachments/assets/f92e69e5-9d03-4375-a411-fa6d9827c1b1)
+![6](https://github.com/user-attachments/assets/82ae11c9-e850-4a27-b0ff-8d3496b15588)
+![7](https://github.com/user-attachments/assets/20a05bdb-9f2b-4786-95d3-e58923a5c068)
 
 <b>Generated File Contents:</b>
 
-![8](https://github.com/icon5730/Data_Extractor/assets/166230648/5f11b31c-417a-4dac-817a-828b270615e3)
-![9](https://github.com/icon5730/Data_Extractor/assets/166230648/d2f8a787-2564-44e4-9aee-492a72550afc)
-![10](https://github.com/icon5730/Data_Extractor/assets/166230648/acee3349-b72f-4366-b210-0bbb54a4ce1d)
-![11](https://github.com/icon5730/Data_Extractor/assets/166230648/accadda8-74ef-4420-b9af-cb219660c9a6)
-
+![8](https://github.com/user-attachments/assets/e3690733-c5e7-4506-aff5-e771b4793627)
+![9](https://github.com/user-attachments/assets/bcda2b5b-787a-464b-a8d8-20f84e47bfff)
+![10](https://github.com/user-attachments/assets/6723b2f9-57aa-4904-87ad-3fa1e9e5f124)
+![11](https://github.com/user-attachments/assets/ee302583-36be-4b07-b194-4f32e70e492a)
