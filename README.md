@@ -23,6 +23,10 @@ Notes:
 ![1](https://github.com/user-attachments/assets/d9db4913-d816-4b59-bcf1-00cf29d4014a)
 ![2](https://github.com/user-attachments/assets/09fe4620-8870-4900-8e24-5a253e5c44df)
 
+<b>Installation Checkup on a different Linux Distribution:</b>
+
+![12](https://github.com/user-attachments/assets/8e09cc62-ffce-4d8b-a517-d063126eeaab)
+
 <b>Folder Contents:</b>
 
 ![3](https://github.com/user-attachments/assets/f2283502-7188-442b-b823-08836734cc0f)
