@@ -20,8 +20,8 @@ Notes:
 
 <b>Full Script Run:</b>
 
-![1](https://github.com/user-attachments/assets/0082ad60-01ff-4a99-8eb6-f77f4fdda6d1)
-![2](https://github.com/user-attachments/assets/425ba94f-5be3-45b8-a450-d4eaa03c0c69)
+![1](https://github.com/user-attachments/assets/e338fe61-9e7c-48d3-ae13-49383731c6b1)
+![2](https://github.com/user-attachments/assets/f81e794c-d684-4945-963d-fc3ae905062a)
 
 <b>Installation Checkup on a different Linux Distribution:</b>
 
@@ -29,15 +29,14 @@ Notes:
 
 <b>Folder Contents:</b>
 
-![3](https://github.com/user-attachments/assets/5901d03d-2df1-4b8e-afb7-c3c3d1e98346)
+![3](https://github.com/user-attachments/assets/4de55d4b-a912-4002-8670-0fdd80dce2f0)
 ![4](https://github.com/user-attachments/assets/4e80aab4-b983-4ba3-addf-b34d407bd3b9)
 ![5](https://github.com/user-attachments/assets/f92e69e5-9d03-4375-a411-fa6d9827c1b1)
 ![6](https://github.com/user-attachments/assets/82ae11c9-e850-4a27-b0ff-8d3496b15588)
 ![7](https://github.com/user-attachments/assets/20a05bdb-9f2b-4786-95d3-e58923a5c068)
 
-<b>Generated File Contents:</b>
 
-![8](https://github.com/user-attachments/assets/92428b3f-1d5d-4980-9dfb-4e24b5c7943f)
-![9](https://github.com/user-attachments/assets/5f17d95b-6c7f-4a3d-9670-7260a1c87470)
-![10](https://github.com/user-attachments/assets/6723b2f9-57aa-4904-87ad-3fa1e9e5f124)
-![11](https://github.com/user-attachments/assets/17a2ce7e-a851-4fdb-9a87-322ab7ddcc64)
+![8](https://github.com/user-attachments/assets/fab9732c-81c1-49d3-ba6f-4b71c5a5876c)
+![9](https://github.com/user-attachments/assets/3b609d12-9b48-4d2c-b0c2-2f87dbc9d828)
+![10](https://github.com/user-attachments/assets/5e02d16e-7bd0-4b6c-b384-1e47d3c3387d)
+![11](https://github.com/user-attachments/assets/0e032ffd-9f66-4a43-b5c4-54bf9334d18b)
