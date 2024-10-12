@@ -190,12 +190,13 @@ start_time=$(date +%s)
 		sleep 0.2
 		echo -e "$cyan[+]$endcolor$blue Generating Binwalk Offset Map...$endcolor"
 		binwalk $path > Offset_Map.txt
+		log_operation "Binwalk Offset Map of inspected file has been generated"
 		mv Offset_Map.txt ./Output_Data.$ts/Offset_Map.txt
 		echo -e "$green[*] Offset Map file was saved inside the main folder$endcolor\n" 
 		sleep 0.2
 		echo -e "$cyan[+]$endcolor$blue Carving file using Foremost...$endcolor"
 		log_operation "Carving inspected file with Foremost"
-		foremost -i $path -Q -t all -o Foremost_Output
+		foremost -i $path -Q -t all -o Foremost_Output 2>/dev/null
 		
 		mv Foremost_Output ./Output_Data.$ts/Foremost_Output
 		echo -e "$green[*] Foremost carving complete. Data was saved into Foremost_Output inside the main folder$endcolor"
@@ -229,17 +230,24 @@ start_time=$(date +%s)
 		log_operation "Bulk Extractor carving complete"
 
 #A strings output folder is created and the script runs strings on the file in order to extract human readable data. It uses a loop function in order to extract the user input data.
-		mkdir Strings_Output
-		read -p "$(echo -e "\n$cyan[?]$endcolor$yellow Please enter human readable values you wish to extract (use spacebar to seperate the values): $endcolor")" values
-		for x in $values
-		do
-		strings $path | grep -i $x > ./Strings_Output/strings_$x.txt | echo -e "$cyan[+]$endcolor$green $x$endcolor$blue human readable was saved into Strings_Output$endcolor" ; log_operation "Generating strings data based on: $x"
-		done
-		mv ./Strings_Output ./Output_Data.$ts/Strings_Output
-		echo -e "$green[*] Human readable data was saved into Strings_Output inside the main folder$endcolor\n" 
-		log_operation "Strings data collection complete"
-		sleep 0.2
 		
+		read -p "$(echo -e "\n$cyan[?]$endcolor$yellow Please enter human readable values you wish to extract (use spacebar to seperate the values): $endcolor")" values
+		log_operation "No strings were provided by the user"
+		if [ -z "$values" 2>/dev/null ]
+			then
+                        echo -e "$red[!] No values were given!$endcolor" ; sleep 0.2
+                        log_operation "No values were given by the user"
+			else
+			mkdir Strings_Output
+			for x in $values
+			do
+			strings $path | grep -i $x > ./Strings_Output/strings_$x.txt | echo -e "$cyan[+]$endcolor$green $x$endcolor$blue human readable was saved into Strings_Output$endcolor" ; log_operation "Generating strings data based on: $x"
+			done
+			mv ./Strings_Output ./Output_Data.$ts/Strings_Output
+			echo -e "$green[*] Human readable data was saved into Strings_Output inside the main folder$endcolor\n" 
+			log_operation "Strings data collection complete"
+			sleep 0.2
+		fi
 
 		else
 		echo -e "$red[!] No file found in the specified path. Please restart the script and input a correct path$endcolor"
@@ -258,20 +266,26 @@ sleep 2
 		echo -e "$green[!] The inspected file is a memory file $endcolor$yellow[ File profile: $endcolor$red$profile$endcolor$yellow ]$endcolor\n"
 		log_operation "The file is a memory file. File profile: $profile"
 		read -p "$(echo -e "\n$cyan[?]$endcolor$yellow Please enter the plugins you wish to use for analysis (use spacebar to seperate the plugins): $endcolor")" plugins
-		
-		mkdir ./Output_Data.$ts/Volatility_Output
-		for x in $plugins
-		do
-               	./vol -f $path --profile=$profile $x --output=html --output-file=$x.html &> /dev/null | echo -e "$cyan[+]$endcolor$blue Analyzing memeory based on the plugin:$endcolor$green $x $endcolor" ; log_operation "Analyzing memory based on the plugin: $x"
-               	mv ./$x.html ./Output_Data.$ts/Volatility_Output/$x.html
-		sleep 2
+		if [ -z "$plugins" 2>/dev/null ]
+			then
+                        echo -e "$red[!] No plugin inputs given!$endcolor" ; sleep 0.2
+                        log_operation "No plugin inputs were given by the user"
+			else
+			mkdir ./Output_Data.$ts/Volatility_Output
+			for x in $plugins
+			do
+               		./vol -f $path --profile=$profile $x --output=html --output-file=$x.html &> /dev/null | echo -e "$cyan[+]$endcolor$blue Analyzing memeory based on the plugin:$endcolor$green $x $endcolor" ; log_operation "Analyzing memory based on the plugin: $x"
+               		mv ./$x.html ./Output_Data.$ts/Volatility_Output/$x.html
+			sleep 2
 
-		done
-		echo -e "$green[*] Analysis is complete. Data was saved into Volatility_Output inside the main folder$endcolor\n\n"
-		log_operation "Volatility analysis complete"
-		rm vol
-		sleep 0.2
+			done
+			echo -e "$green[*] Analysis is complete. Data was saved into Volatility_Output inside the main folder$endcolor\n\n"
+			log_operation "Volatility analysis complete"
+			rm vol
+			sleep 0.2
 
+
+		fi
 		else echo -e "$red[!] The inspected file is not a memory file. Volatility analysis imossible$endcolor\n\n"
 		log_operation "Inspected file is not a memory file. Volatility analysis impossible"
 		rm vol
@@ -289,7 +303,8 @@ echo "Elapsed time: $elapsed_time Seconds" > Table_of_Contents.$ts.txt
 tree Output_Data.$ts >> Table_of_Contents.$ts.txt
 mv ./Table_of_Contents.$ts.txt ./Output_Data.$ts/Table_of_Contents.$ts
 
-read -p "$(echo -e "\n$cyan[*]$endcolor$green Data carving and gethering complete \n$endcolor$cyan[+]$endcolor$yellow Time elapsed: $endcolor$red$elapsed_time Seconds \n$endcolor$cyan[?]$endcolor$yellow Would you like to zip the output folder? [Y/N] $endcolor")" decision
+read -p "$(echo -e "\n$cyan[*]$endcolor$green Data carving and gethering complete \n$endcolor$cyan[+]$endcolor$yellow Time elapsed: $endcolor$red$elapsed_time Seconds \n$cyan[+]$endcolor$yellow Foremost content: $endcolor$red$(tree ./Output_Data.$ts/Foremost_Output/ | tail -1)$endcolor\n$cyan[+]$endcolor$yellow Bulk Extractor content: $endcolor$red$(tree ./Output_Data.$ts/Bulk_Output/ | tail -1)$endcolor\n$cyan[+]$endcolor$yellow Strings content: $endcolor$red$(tree ./Output_Data.$ts/Strings_Output/ | tail -1)$endcolor\n$cyan[+]$endcolor$yellow Volatility content: $endcolor$red$(tree ./Output_Data.$ts/Volatility_Output/ | tail -1)$endcolor\n\n$cyan[?]$endcolor$yellow Would you like to zip the output folder? [Y/N] $endcolor")" decision
+log_operation "Foremost content: $(tree ./Output_Data.$ts/Foremost_Output/ | tail -1); Bulk Extractor content: $(tree ./Output_Data.$ts/Bulk_Output/ | tail -1); Strings content: $(tree ./Output_Data.$ts/Strings_Output/ | tail -1); Volatility content: $(tree ./Output_Data.$ts/Volatility_Output/ | tail -1)"
 case $decision in
 
 Y)	log_operation "File inspection complete. Total inspection time: $elapsed_time seconds"
@@ -297,21 +312,84 @@ Y)	log_operation "File inspection complete. Total inspection time: $elapsed_time
 	zip -r -q Data_Extractor_Files.$ts Output_Data.$ts
 	rm -r Output_Data.$ts
 	read -p "$(echo -e "\n$cyan[?]$endcolor$yellow Would you like to analyze another file? [Y/N] $endcolor")" answer
-	
-       	if [ $answer == Y ]; then analyze
-                               else     echo -e "\n$yellow*******************************************************************************$endcolor"
+        case $answer in
+        Y) analyze
+        ;;
+	y) analyze
+	;;
+        N)                              echo -e "\n$yellow*******************************************************************************$endcolor"
                                         echo -e "$yellow*******************************************************************************$endcolor"
                                         echo -e "$yellow*************************ANALYSIS COMPLETE! EXITING...*************************$endcolor"
                                         echo -e "$yellow*******************************************************************************$endcolor"
                                         echo -e "$yellow*******************************************************************************$endcolor"
-										exit 1 
-       	fi
-;;
+                                                                                exit 1 
 
+	;;
+        n)                              echo -e "\n$yellow*******************************************************************************$endcolor"
+                                        echo -e "$yellow*******************************************************************************$endcolor"
+                                        echo -e "$yellow*************************ANALYSIS COMPLETE! EXITING...*************************$endcolor"
+                                        echo -e "$yellow*******************************************************************************$endcolor"
+                                        echo -e "$yellow*******************************************************************************$endcolor"
+                                                                                exit 1
+
+
+	;;
+        *) echo -e "$red[!] Invalid input!endcolor"
+        echo -e "\n$yellow*******************************************************************************$endcolor"
+        echo -e "$yellow*******************************************************************************$endcolor"
+        echo -e "$yellow*************************ANALYSIS COMPLETE! EXITING...*************************$endcolor"
+        echo -e "$yellow*******************************************************************************$endcolor"
+        echo -e "$yellow*******************************************************************************$endcolor"
+                exit 1
+
+        ;;
+        esac
+
+;;
+y)	log_operation "File inspection complete. Total inspection time: $elapsed_time seconds"
+        echo -e "\n$cyan[+]$endcolor$blue Zipping data as$endcolor$green Data_Extractor.$ts$endcolor$blue and cleaning up...$endcolor\n"
+        zip -r -q Data_Extractor_Files.$ts Output_Data.$ts
+        rm -r Output_Data.$ts
+        read -p "$(echo -e "\n$cyan[?]$endcolor$yellow Would you like to analyze another file? [Y/N] $endcolor")" answer
+        case $answer in
+        Y) analyze
+        ;;
+        y) analyze
+        ;;
+        N)                              echo -e "\n$yellow*******************************************************************************$endcolor"
+                                        echo -e "$yellow*******************************************************************************$endcolor"
+                                        echo -e "$yellow*************************ANALYSIS COMPLETE! EXITING...*************************$endcolor"
+                                        echo -e "$yellow*******************************************************************************$endcolor"
+                                        echo -e "$yellow*******************************************************************************$endcolor"
+                                                                                exit 1 
+
+        ;;
+        n)                              echo -e "\n$yellow*******************************************************************************$endcolor"
+                                        echo -e "$yellow*******************************************************************************$endcolor"
+                                        echo -e "$yellow*************************ANALYSIS COMPLETE! EXITING...*************************$endcolor"
+                                        echo -e "$yellow*******************************************************************************$endcolor"
+                                        echo -e "$yellow*******************************************************************************$endcolor"
+                                                                                exit 1
+
+
+        ;;
+        *) echo -e "$red[!] Invalid input!endcolor"
+        echo -e "\n$yellow*******************************************************************************$endcolor"
+        echo -e "$yellow*******************************************************************************$endcolor"
+        echo -e "$yellow*************************ANALYSIS COMPLETE! EXITING...*************************$endcolor"
+        echo -e "$yellow*******************************************************************************$endcolor"
+        echo -e "$yellow*******************************************************************************$endcolor"
+                exit 1
+
+        ;;
+	esac
+;;
 N)	log_operation "File inspection complete. Total inspection time: $elapsed_time seconds"
 	read -p "$(echo -e "\n$cyan[?]$endcolor$yellow Would you like to analyze another file? [Y/N] $endcolor")" answer
        	case $answer in
 	Y) analyze
+	;;
+	y) analyze
 	;;
 
 	N) 				echo -e "\n$yellow*******************************************************************************$endcolor"
@@ -321,6 +399,14 @@ N)	log_operation "File inspection complete. Total inspection time: $elapsed_time
                                         echo -e "$yellow*******************************************************************************$endcolor"
 										exit 1 
        	;;
+	n)                              echo -e "\n$yellow*******************************************************************************$endcolor"
+                                        echo -e "$yellow*******************************************************************************$endcolor"
+                                        echo -e "$yellow*************************ANALYSIS COMPLETE! EXITING...*************************$endcolor"
+                                        echo -e "$yellow*******************************************************************************$endcolor"
+                                        echo -e "$yellow*******************************************************************************$endcolor"
+                                                                                exit 1
+
+	;;
 	*) echo -e "$red[!] Invalid input!endcolor"
         echo -e "\n$yellow*******************************************************************************$endcolor"
         echo -e "$yellow*******************************************************************************$endcolor"
@@ -331,6 +417,40 @@ N)	log_operation "File inspection complete. Total inspection time: $elapsed_time
 
 	;;
 	esac
+;;
+n)	log_operation "File inspection complete. Total inspection time: $elapsed_time seconds"
+        read -p "$(echo -e "\n$cyan[?]$endcolor$yellow Would you like to analyze another file? [Y/N] $endcolor")" answer
+        case $answer in
+        Y) analyze
+        ;;
+        y) analyze
+        ;;
+
+        N)                              echo -e "\n$yellow*******************************************************************************$endcolor"
+                                        echo -e "$yellow*******************************************************************************$endcolor"
+                                        echo -e "$yellow*************************ANALYSIS COMPLETE! EXITING...*************************$endcolor"
+                                        echo -e "$yellow*******************************************************************************$endcolor"
+                                        echo -e "$yellow*******************************************************************************$endcolor"
+                                                                                exit 1 
+        ;;
+        n)                              echo -e "\n$yellow*******************************************************************************$endcolor"
+                                        echo -e "$yellow*******************************************************************************$endcolor"
+                                        echo -e "$yellow*************************ANALYSIS COMPLETE! EXITING...*************************$endcolor"
+                                        echo -e "$yellow*******************************************************************************$endcolor"
+                                        echo -e "$yellow*******************************************************************************$endcolor"
+                                                                                exit 1
+
+        ;;
+        *) echo -e "$red[!] Invalid input!endcolor"
+        echo -e "\n$yellow*******************************************************************************$endcolor"
+        echo -e "$yellow*******************************************************************************$endcolor"
+        echo -e "$yellow*************************ANALYSIS COMPLETE! EXITING...*************************$endcolor"
+        echo -e "$yellow*******************************************************************************$endcolor"
+        echo -e "$yellow*******************************************************************************$endcolor"
+                exit 1
+
+        ;;
+        esac
 ;;
 *)	echo -e "$red[!] Invalid input!$endcolor"
 	log_operation "File inspection complete. Total inspection time: $elapsed_time seconds"
