@@ -227,7 +227,7 @@ start_time=$(date +%s)
 			fi
 		mv ./Bulk_Output ./Output_Data.$ts/Bulk_Output
 		echo -e "$green[*] Bulk Extractor carving complete. Data was saved into Bulk_Output inside the main folder$endcolor\n"
-		log_operation "Bulk Extractor carving complete; Foremost content: $(tree ./Output_Data.$ts/Bulk_Output/ | tail -1)"
+		log_operation "Bulk Extractor carving complete; Bulk Extractor content: $(tree ./Output_Data.$ts/Bulk_Output/ | tail -1)"
 
 #A strings output folder is created and the script runs strings on the file in order to extract human readable data. It uses a loop function in order to extract the user input data.
 		
@@ -245,7 +245,7 @@ start_time=$(date +%s)
 			done
 			mv ./Strings_Output ./Output_Data.$ts/Strings_Output
 			echo -e "$green[*] Human readable data was saved into Strings_Output inside the main folder$endcolor\n" 
-			log_operation "Strings data collection complete; Foremost content: $(tree ./Output_Data.$ts/Strings_Output/ | tail -1)"
+			log_operation "Strings data collection complete; Strings content: $(tree ./Output_Data.$ts/Strings_Output/ | tail -1)"
 			sleep 0.2
 		fi
 
@@ -280,7 +280,7 @@ sleep 2
 
 			done
 			echo -e "$green[*] Analysis is complete. Data was saved into Volatility_Output inside the main folder$endcolor\n\n"
-			log_operation "Volatility analysis complete; Foremost content: $(tree ./Output_Data.$ts/Volatility_Output/ | tail -1)"
+			log_operation "Volatility analysis complete; Volatility content: $(tree ./Output_Data.$ts/Volatility_Output/ | tail -1)"
 			rm vol
 			sleep 0.2
 
