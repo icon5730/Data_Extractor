@@ -200,7 +200,7 @@ start_time=$(date +%s)
 		
 		mv Foremost_Output ./Output_Data.$ts/Foremost_Output
 		echo -e "$green[*] Foremost carving complete. Data was saved into Foremost_Output inside the main folder$endcolor"
-		log_operation "Foremost carving complete"
+		log_operation "Foremost carving complete; Foremost content: $(tree ./Output_Data.$ts/Foremost_Output/ | tail -1)"
 		echo -e "$cyan[+]$endcolor$blue Generating metadata on Foremost output...$endcolor"
 		log_operation "Generating Exiftool metadata on Foremost ouput data"
 		exiftool -q -r ./Output_Data.$ts/Foremost_Output/ > ./Output_Data.$ts/Foremost_Output_Metadata.txt
@@ -227,7 +227,7 @@ start_time=$(date +%s)
 			fi
 		mv ./Bulk_Output ./Output_Data.$ts/Bulk_Output
 		echo -e "$green[*] Bulk Extractor carving complete. Data was saved into Bulk_Output inside the main folder$endcolor\n"
-		log_operation "Bulk Extractor carving complete"
+		log_operation "Bulk Extractor carving complete; Foremost content: $(tree ./Output_Data.$ts/Bulk_Output/ | tail -1)"
 
 #A strings output folder is created and the script runs strings on the file in order to extract human readable data. It uses a loop function in order to extract the user input data.
 		
@@ -245,7 +245,7 @@ start_time=$(date +%s)
 			done
 			mv ./Strings_Output ./Output_Data.$ts/Strings_Output
 			echo -e "$green[*] Human readable data was saved into Strings_Output inside the main folder$endcolor\n" 
-			log_operation "Strings data collection complete"
+			log_operation "Strings data collection complete; Foremost content: $(tree ./Output_Data.$ts/Strings_Output/ | tail -1)"
 			sleep 0.2
 		fi
 
@@ -280,7 +280,7 @@ sleep 2
 
 			done
 			echo -e "$green[*] Analysis is complete. Data was saved into Volatility_Output inside the main folder$endcolor\n\n"
-			log_operation "Volatility analysis complete"
+			log_operation "Volatility analysis complete; Foremost content: $(tree ./Output_Data.$ts/Volatility_Output/ | tail -1)"
 			rm vol
 			sleep 0.2
 
@@ -304,7 +304,6 @@ tree Output_Data.$ts >> Table_of_Contents.$ts.txt
 mv ./Table_of_Contents.$ts.txt ./Output_Data.$ts/Table_of_Contents.$ts
 
 read -p "$(echo -e "\n$cyan[*]$endcolor$green Data carving and gethering complete \n$endcolor$cyan[+]$endcolor$yellow Time elapsed: $endcolor$red$elapsed_time Seconds \n$cyan[+]$endcolor$yellow Foremost content: $endcolor$red$(tree ./Output_Data.$ts/Foremost_Output/ | tail -1)$endcolor\n$cyan[+]$endcolor$yellow Bulk Extractor content: $endcolor$red$(tree ./Output_Data.$ts/Bulk_Output/ | tail -1)$endcolor\n$cyan[+]$endcolor$yellow Strings content: $endcolor$red$(tree ./Output_Data.$ts/Strings_Output/ | tail -1)$endcolor\n$cyan[+]$endcolor$yellow Volatility content: $endcolor$red$(tree ./Output_Data.$ts/Volatility_Output/ | tail -1)$endcolor\n\n$cyan[?]$endcolor$yellow Would you like to zip the output folder? [Y/N] $endcolor")" decision
-log_operation "Foremost content: $(tree ./Output_Data.$ts/Foremost_Output/ | tail -1); Bulk Extractor content: $(tree ./Output_Data.$ts/Bulk_Output/ | tail -1); Strings content: $(tree ./Output_Data.$ts/Strings_Output/ | tail -1); Volatility content: $(tree ./Output_Data.$ts/Volatility_Output/ | tail -1)"
 case $decision in
 
 Y)	log_operation "File inspection complete. Total inspection time: $elapsed_time seconds"
