@@ -232,7 +232,6 @@ start_time=$(date +%s)
 #A strings output folder is created and the script runs strings on the file in order to extract human readable data. It uses a loop function in order to extract the user input data.
 		
 		read -p "$(echo -e "\n$cyan[?]$endcolor$yellow Please enter human readable values you wish to extract (use spacebar to seperate the values): $endcolor")" values
-		log_operation "No strings were provided by the user"
 		if [ -z "$values" 2>/dev/null ]
 			then
                         echo -e "$red[!] No values were given!$endcolor" ; sleep 0.2
