@@ -23,7 +23,7 @@ Notes:
 ![1](https://github.com/user-attachments/assets/e338fe61-9e7c-48d3-ae13-49383731c6b1)
 ![2](https://github.com/user-attachments/assets/f81e794c-d684-4945-963d-fc3ae905062a)
 
-<b>Installation Checkup on a different Linux Distribution:</b>
+<b>Installation Checkup on a different Linux Distributions:</b>
 
 ![12](https://github.com/user-attachments/assets/8e09cc62-ffce-4d8b-a517-d063126eeaab)
 ![13](https://github.com/user-attachments/assets/de0bce9a-7015-4ac0-8bd0-f181c454c292)
