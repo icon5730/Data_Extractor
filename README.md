@@ -25,7 +25,12 @@ Notes:
 
 <b>Installation Checkup on a different Linux Distributions:</b>
 
+ParrotOS:
+
 ![12](https://github.com/user-attachments/assets/8e09cc62-ffce-4d8b-a517-d063126eeaab)
+
+DragonOS:
+
 ![13](https://github.com/user-attachments/assets/de0bce9a-7015-4ac0-8bd0-f181c454c292)
 
 <b>Folder Contents:</b>
