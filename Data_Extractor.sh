@@ -211,7 +211,7 @@ start_time=$(date +%s)
 			sleep 0.2
 			else
 			echo -e "$red[!] Foremost not found! Unable to carve with Foremost$endcolor"
-                        log_operation "Carving with Foremost wasn't possivble due to it not being installed"
+                        log_operation "Carving with Foremost wasn't possible due to it not being installed"
 
 		fi
 
@@ -271,7 +271,7 @@ start_time=$(date +%s)
 		analyze
 	fi
 
-#Script attemts to determine the file's profile in order to find out whether or not a .mem file is being used. If a profile is not found - the file is a memory file. If the file is a memory file, the script extracts the profile and displays it on screen. Then, it prompts the user to type in the plugins they would like to use. The script analyzes the file based on the plugins, and saves the data into .html files inside an output folder that is later moved into the main outout folder. If the file is not a memory file, the script prompts the user and continue to the final part. 
+#Script attempts to determine the file's profile in order to find out whether or not a .mem file is being used. If a profile is not found - the file is a memory file. If the file is a memory file, the script extracts the profile and displays it on screen. Then, it prompts the user to type in the plugins they would like to use. The script analyzes the file based on the plugins, and saves the data into .html files inside an output folder that is later moved into the main outout folder. If the file is not a memory file, the script prompts the user and continue to the final part. 
 
 if [ ! -f $voli &>/dev/null ];
 then
