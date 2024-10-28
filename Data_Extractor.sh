@@ -194,26 +194,35 @@ start_time=$(date +%s)
 		mv Offset_Map.txt ./Output_Data.$ts/Offset_Map.txt
 		echo -e "$green[*] Offset Map file was saved inside the main folder$endcolor\n" 
 		sleep 0.2
-		echo -e "$cyan[+]$endcolor$blue Carving file using Foremost...$endcolor"
-		log_operation "Carving inspected file with Foremost"
-		foremost -i $path -Q -t all -o Foremost_Output 2>/dev/null
+		if command -v foremost &>/dev/null;
+			then
+			echo -e "$cyan[+]$endcolor$blue Carving file using Foremost...$endcolor"
+			log_operation "Carving inspected file with Foremost"
+			foremost -i $path -Q -t all -o Foremost_Output 2>/dev/null
 		
-		mv Foremost_Output ./Output_Data.$ts/Foremost_Output
-		echo -e "$green[*] Foremost carving complete. Data was saved into Foremost_Output inside the main folder$endcolor"
-		log_operation "Foremost carving complete; Foremost content: $(tree ./Output_Data.$ts/Foremost_Output/ | tail -1)"
-		echo -e "$cyan[+]$endcolor$blue Generating metadata on Foremost output...$endcolor"
-		log_operation "Generating Exiftool metadata on Foremost ouput data"
-		exiftool -q -r ./Output_Data.$ts/Foremost_Output/ > ./Output_Data.$ts/Foremost_Output_Metadata.txt
-		echo -e "$green[*] File metadata was saved into Foremost_Output_Metadata.txt inside the main folder $endcolor\n"
-		log_operation "Exiftool metadata generated"
-		sleep 0.2
+			mv Foremost_Output ./Output_Data.$ts/Foremost_Output
+			echo -e "$green[*] Foremost carving complete. Data was saved into Foremost_Output inside the main folder$endcolor"
+			log_operation "Foremost carving complete; Foremost content: $(tree ./Output_Data.$ts/Foremost_Output/ | tail -1)"
+			echo -e "$cyan[+]$endcolor$blue Generating metadata on Foremost output...$endcolor"
+			log_operation "Generating Exiftool metadata on Foremost ouput data"
+			exiftool -q -r ./Output_Data.$ts/Foremost_Output/ > ./Output_Data.$ts/Foremost_Output_Metadata.txt
+			echo -e "$green[*] File metadata was saved into Foremost_Output_Metadata.txt inside the main folder $endcolor\n"
+			log_operation "Exiftool metadata generated"
+			sleep 0.2
+			else
+			echo -e "$red[!] Foremost not found! Unable to carve with Foremost$endcolor"
+                        log_operation "Carving with Foremost wasn't possivble due to it not being installed"
 
-		echo -e "$cyan[+]$endcolor$blue Carving file using Bulk Extractor...$endcolor"
-		log_operation "Carving inspected file with Bulk Extractor"
-		bulk_extractor -o Bulk_Output $path &> /dev/null
-		sleep 5
-			if
-				[ -f ./Bulk_Output/packets.pcap ]
+		fi
+
+		if command -v bulk_extractor &>/dev/null;
+			then
+			echo -e "$cyan[+]$endcolor$blue Carving file using Bulk Extractor...$endcolor"
+			log_operation "Carving inspected file with Bulk Extractor"
+			bulk_extractor -o Bulk_Output $path &> /dev/null
+			sleep 5
+				
+				if [ -f ./Bulk_Output/packets.pcap ]
 					then
 					echo -e "$green[!] A packets.pcap file has been located$endcolor"
 					echo -e "$cyan[+]$endcolor$yellow The packets' file size is: $endcolor$red$(ls -lh Bulk_Output | grep packets | awk '{print $5}')$endcolor"
@@ -224,36 +233,49 @@ start_time=$(date +%s)
 					else
 					echo -e "$red[!] No packets.pcap file found within carved data$endcolor"
 					log_operation "No .pcap file found"
-			fi
-		mv ./Bulk_Output ./Output_Data.$ts/Bulk_Output
-		echo -e "$green[*] Bulk Extractor carving complete. Data was saved into Bulk_Output inside the main folder$endcolor\n"
-		log_operation "Bulk Extractor carving complete; Bulk Extractor content: $(tree ./Output_Data.$ts/Bulk_Output/ | tail -1)"
-
-#A strings output folder is created and the script runs strings on the file in order to extract human readable data. It uses a loop function in order to extract the user input data.
-		
-		read -p "$(echo -e "\n$cyan[?]$endcolor$yellow Please enter human readable values you wish to extract (use spacebar to seperate the values): $endcolor")" values
-		if [ -z "$values" 2>/dev/null ]
-			then
-                        echo -e "$red[!] No values were given!$endcolor" ; sleep 0.2
-                        log_operation "No values were given by the user"
+				fi
+			mv ./Bulk_Output ./Output_Data.$ts/Bulk_Output
+			echo -e "$green[*] Bulk Extractor carving complete. Data was saved into Bulk_Output inside the main folder$endcolor\n"
+			log_operation "Bulk Extractor carving complete; Bulk Extractor content: $(tree ./Output_Data.$ts/Bulk_Output/ | tail -1)"
 			else
-			mkdir Strings_Output
-			for x in $values
-			do
-			strings $path | grep -i $x > ./Strings_Output/strings_$x.txt | echo -e "$cyan[+]$endcolor$green $x$endcolor$blue human readable was saved into Strings_Output$endcolor" ; log_operation "Generating strings data based on: $x"
-			done
-			mv ./Strings_Output ./Output_Data.$ts/Strings_Output
-			echo -e "$green[*] Human readable data was saved into Strings_Output inside the main folder$endcolor\n" 
-			log_operation "Strings data collection complete; Strings content: $(tree ./Output_Data.$ts/Strings_Output/ | tail -1)"
-			sleep 0.2
+			echo -e "$red[!] Bulk Extractor not found! Unable to carve with Bulk Extractor$endcolor"
+			log_operation "Carving with Bulk Extractor wasn't possible due to it not being installed"
 		fi
 
+#A strings output folder is created and the script runs strings on the file in order to extract human readable data. It uses a loop function in order to extract the user input data.
+		if command -v strings &>/dev/null;
+			then
+			read -p "$(echo -e "\n$cyan[?]$endcolor$yellow Please enter human readable values you wish to extract (use spacebar to seperate the values): $endcolor")" values
+			if [ -z "$values" 2>/dev/null ]
+				then
+                        	echo -e "$red[!] No values were given!$endcolor" ; sleep 0.2
+                        	log_operation "No values were given by the user"
+				else
+				mkdir Strings_Output
+				for x in $values
+				do
+				strings $path | grep -i $x > ./Strings_Output/strings_$x.txt | echo -e "$cyan[+]$endcolor$green $x$endcolor$blue human readable was saved into Strings_Output$endcolor" ; log_operation "Generating strings data based on: $x"
+				done
+				mv ./Strings_Output ./Output_Data.$ts/Strings_Output
+				echo -e "$green[*] Human readable data was saved into Strings_Output inside the main folder$endcolor\n" 
+				log_operation "Strings data collection complete; Strings content: $(tree ./Output_Data.$ts/Strings_Output/ | tail -1)"
+				sleep 0.2
+			fi
+			else
+			echo -e "$red[!] Strings not found! Unable to extract human readable$endcolor"
+			log_operation "Collecting human readable wasn't possible due to Strings not being installed"
+		fi
 		else
-		echo -e "$red[!] No file found in the specified path. Please restart the script and input a correct path$endcolor"
-		exit 1
+		echo -e "$red[!] No file found in the specified path$endcolor"
+		sleep 0.2
+		analyze
 	fi
 
 #Script attemts to determine the file's profile in order to find out whether or not a .mem file is being used. If a profile is not found - the file is a memory file. If the file is a memory file, the script extracts the profile and displays it on screen. Then, it prompts the user to type in the plugins they would like to use. The script analyzes the file based on the plugins, and saves the data into .html files inside an output folder that is later moved into the main outout folder. If the file is not a memory file, the script prompts the user and continue to the final part. 
+
+if [ ! -f $voli &>/dev/null ];
+then
+
 echo -e "$cyan[*]$endcolor$yellow Attempting Volatility analysis on inspected file...$endcolor\n"
 log_operation "Checking for memory file for Volatility use"
 voli=$(find /home/ -type f -iname "vol" | head -n 1 2>/dev/null)
@@ -290,9 +312,12 @@ sleep 2
 		rm vol
 		sleep 0.2
 	fi
+else
+echo -e "$red[!] Volatility not found! Unable to perform memory analysis$endcolor"
+log_operation "Memory analysis wasn't possible due to Volatility not being installed"
 
 
-
+fi
 end_time=$(date +%s)
 elapsed_time=$((end_time - start_time))
 
