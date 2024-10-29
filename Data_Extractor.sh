@@ -141,10 +141,14 @@ if ! command -v figlet &>/dev/null || ! command -v foremost &>/dev/null || ! com
         read -p "$(echo -e "\n$cyan[?]$endcolor$yellow Would you like to run the script anyway? [Y/N] $endcolor")" choice
 		case $choice in
 		Y) text
+		y) text
 		;;
 		N) echo -e "$cyan[*]$endcolor$red Exiting..."
         	sleep 0.3
         	exit 1 
+		n) echo -e "$cyan[*]$endcolor$red Exiting..."
+                sleep 0.3
+                exit 1 
 		;;
 		*) echo -e "$red[!] Invalid choice. Exiting...$endcolor"
 		sleep 0.3
