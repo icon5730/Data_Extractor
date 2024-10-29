@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/activity</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/issues</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/pulls</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/actions</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/security</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/blob/main/Data_Extractor.sh</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/blob/main/README.md</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/releases</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/labels</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/milestones</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/labels?sort=name-asc</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/labels?sort=name-desc</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/labels?sort=count-desc</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/labels?sort=count-asc</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/labels/bug</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/labels/documentation</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/labels/duplicate</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/labels/enhancement</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/labels/good%20first%20issue</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/labels/help%20wanted</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/labels/invalid</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/labels/question</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/labels/wontfix</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/milestones?state=open</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/milestones?state=closed</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/milestones?direction=desc&amp;sort=due_date&amp;state=open</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/milestones?direction=asc&amp;sort=due_date&amp;state=open</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/milestones?direction=asc&amp;sort=completeness&amp;state=open</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/milestones?direction=desc&amp;sort=completeness&amp;state=open</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/milestones?direction=asc&amp;sort=title&amp;state=open</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/milestones?direction=desc&amp;sort=title&amp;state=open</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/milestones?direction=desc&amp;sort=count&amp;state=open</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/milestones?direction=asc&amp;sort=count&amp;state=open</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/milestones?direction=desc&amp;sort=due_date&amp;state=closed</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/milestones?direction=asc&amp;sort=due_date&amp;state=closed</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/milestones?direction=asc&amp;sort=completeness&amp;state=closed</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/milestones?direction=desc&amp;sort=completeness&amp;state=closed</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/milestones?direction=asc&amp;sort=title&amp;state=closed</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/milestones?direction=desc&amp;sort=title&amp;state=closed</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/milestones?direction=desc&amp;sort=count&amp;state=closed</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://github.com/icon5730/Data_Extractor/milestones?direction=asc&amp;sort=count&amp;state=closed</loc>
+  <lastmod>2024-10-29T22:57:56+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+
+
+</urlset>
