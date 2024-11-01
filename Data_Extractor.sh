@@ -279,7 +279,7 @@ start_time=$(date +%s)
 
 #Script attempts to determine the file's profile in order to find out whether or not a .mem file is being used. If a profile is not found - the file is a memory file. If the file is a memory file, the script extracts the profile and displays it on screen. Then, it prompts the user to type in the plugins they would like to use. The script analyzes the file based on the plugins, and saves the data into .html files inside an output folder that is later moved into the main outout folder. If the file is not a memory file, the script prompts the user and continue to the final part. 
 
-if [ ! -f $voli &>/dev/null ];
+if [ -z $voli ];
 then
 
 echo -e "$cyan[*]$endcolor$yellow Attempting Volatility analysis on inspected file...$endcolor\n"
@@ -319,7 +319,7 @@ sleep 2
 		sleep 0.2
 	fi
 else
-echo -e "$red[!] Volatility not found! Unable to perform memory analysis$endcolor"
+echo -e "$red[!] $endcolor"
 log_operation "Memory analysis wasn't possible due to Volatility not being installed"
 
 
