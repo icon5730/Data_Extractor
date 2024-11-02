@@ -297,6 +297,8 @@ sleep 2
 			then
                         echo -e "$red[!] No plugin inputs given!$endcolor" ; sleep 0.2
                         log_operation "No plugin inputs were given by the user"
+						rm vol
+						sleep 0.2
 			else
 			mkdir ./Output_Data.$ts/Volatility_Output
 			for x in $plugins
