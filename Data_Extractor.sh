@@ -132,10 +132,22 @@ if ! command -v exiftool &> /dev/null ;then
         else echo -e "$green[*] Exiftool is already installed$endcolor" ; sleep 0.2
 fi
 }
+function installation8(){
+if ! command -v binwalk &> /dev/null; then
+        echo -e "$red[!] Binwalk is not installed$endcolor" ; sleep 0.2
+        echo -e "$yellow[+] Installing Binwalk $endcolor"
+        sudo apt install binwalk -y &> /dev/null
+                if ! command -v binwalk &>/dev/null ; then echo -e "$red[!] Failed to install Binwalk $endcolor"
+                        else echo -e "$green[*] Binwalk is installed$endcolor" ; sleep 0.2
+                fi
+        else echo -e "$green[*] Binwalk is already installed$endcolor" ; sleep 0.2
+fi
+}
+
 
 function test(){
 
-if ! command -v figlet &>/dev/null || ! command -v foremost &>/dev/null || ! command -v strings &>/dev/null || ! command -v bulk_extractor &>/dev/null || -f $voli &>/dev/null || ! command -v exiftool &> /dev/null
+if ! command -v figlet &>/dev/null || ! command -v foremost &>/dev/null || ! command -v strings &>/dev/null || ! command -v bulk_extractor &>/dev/null || -f $voli &>/dev/null || ! command -v exiftool &> /dev/null || ! command -v binwalk &> /dev/null
         then
         echo -e "$red[!] One or more of the tools needed to run this script was not installed and required an autoinstall attempt$endcolor"
         read -p "$(echo -e "\n$cyan[?]$endcolor$yellow Would you like to run the script anyway? [Y/N] $endcolor")" choice
@@ -144,11 +156,11 @@ if ! command -v figlet &>/dev/null || ! command -v foremost &>/dev/null || ! com
 		;;
 		y) text
 		;;
-		N) echo -e "$cyan[*]$endcolor$red Exiting..."
+		N) echo -e "$cyan[*]$endcolor$red Exiting...$endcolor"
         	sleep 0.3
         	exit 1
 		;; 
-		n) echo -e "$cyan[*]$endcolor$red Exiting..."
+		n) echo -e "$cyan[*]$endcolor$red Exiting...$endcolor"
                 sleep 0.3
                 exit 1 
 		;;
@@ -191,6 +203,8 @@ start_time=$(date +%s)
 		mkdir Output_Data.$ts
 		log_file="./Output_Data.$ts/Operation_Log.txt"
 		log_operation "Inspecting file: $path"
+		if command -v binwalk &> /dev/null;
+		then
 		log_operation "Generating Binwalk Offset Map of inspected file"
 		binwalk $path -e 2> /dev/null
 		sleep 0.2
@@ -200,6 +214,11 @@ start_time=$(date +%s)
 		mv Offset_Map.txt ./Output_Data.$ts/Offset_Map.txt
 		echo -e "$green[*] Offset Map file was saved inside the main folder$endcolor\n" 
 		sleep 0.2
+		else
+		echo -e "$red[!] Binwalk not found! Unable to generate Offset Map$endcolor"
+                log_operation "Offset Map generation wasn't possible due to Binwalk not being installed"
+		fi
+
 		if command -v foremost &>/dev/null;
 			then
 			echo -e "$cyan[+]$endcolor$blue Carving file using Foremost...$endcolor"
@@ -512,4 +531,5 @@ installation4
 installation5
 installation6
 installation7
+installation8
 test
